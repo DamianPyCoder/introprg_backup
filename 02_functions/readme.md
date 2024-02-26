@@ -17,3 +17,25 @@
 - [x]    Exercici 32_15. Inicials en majúscules  
 - [x]    Exercici 32_16. El text del revés (versió bàsica)  
 - [x]    Exercici 32_17. Codifica bàsic  
+
+
+
+## Llista d'exercicis de funcions i variables  
+
+- [ ]    Exercici 32_18. Compara ocurrències  
+- [ ]    Exercici 32_19. Compta vocals  
+- [ ]    Exercici 32_20. Tipus de mòduls  
+- [ ]    Exercici 32_21. Matricules italianes modulades  
+- [ ]    Exercici 32_22. Utilitats de confirmació  
+- [ ]    Exercici 32_23. És vocal  
+- [ ]    Exercici 32_24. Només lletres (amb mòduls)  
+- [ ]    Exercici 32_25. Classifiquem les variables  
+- [ ]    Exercici 32_26. Secció d'un String (modular)  
+- [ ]    Exercici 32_27. És enter (modular)  
+- [ ]    Exercici 32_28. És enter (flexible)  
+- [ ]    Exercici 32_29. Cadena continua (modular)  
+- [ ]    Exercici 32_30. Substrings  
+- [ ]    Exercici 32_31. Prefixos i sufixos  
+- [ ]    Exercici 32_32. Quants cops  
+- [ ]    Exercici 32_33. Progressió de les paraules  
+
