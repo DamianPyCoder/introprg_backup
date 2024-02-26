@@ -1,8 +1,8 @@
 ## Llista d'exercicis del primer contacte amb mòduls
 
--[]  Exercici 32_01. Molts quadrats  
--[ ]  Exercici 32_02. Quadrats amb un mòdul  
--[x]  Exercici 32_03. Quadrats modulars  
+- []  Exercici 32_01. Molts quadrats  
+- [ ]  Exercici 32_02. Quadrats amb un mòdul  
+- [x]  Exercici 32_03. Quadrats modulars  
     Exercici 32_04. El lloro quadrat  
     Exercici 32_05. El quadrat parametritzat  
     Exercici 32_06. El quadrat re-parametritzat  
