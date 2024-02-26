@@ -12,6 +12,29 @@ Instruccions seqüencials:
     Exercici 31_11. Precedència dels operadors  
     Exercici 31_12. Algunes taules  
     Exercici 31_13. Simplificació d'expressions  
-    
+
+      
+Instruccions condicionals
+
+La llista d'exercicis sobre condicionals és:  
+    Exercici 31_14. La presó  
+    Exercici 31_15. Dos en ordre  
+    Exercici 31_16. Parells i senars  
+    Exercici 31_17. Exercici d'operador ternari  
+    Exercici 31_18. Els blocs d'un programa  
+    Exercici 31_19. El classificador d'autocaravanes  
+    Exercici 31_20. Els dies de la setmana  
+    Exercici 31_21. Els dies de la setmana (revisitat)  
+    Exercici 31_22. Els dies de la setmana (revisitat novament)  
+    Exercici 31_23. Mesos i anys  
+    Exercici 31_24. Tres en ordre  
+    Exercici 31_25. Una calculadora senzilla  
+    Exercici 31_26. Pagaments  
+    Exercici 31_27. La guia de semàfors  
+    Exercici 31_28. El nombre de fills  
+    Exercici 31_29. L'ascensor  
+    Exercici 31_30. El metge virtual  
+
+
 
 
