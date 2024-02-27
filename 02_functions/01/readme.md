@@ -4,18 +4,18 @@ Desenvolupa un programa que demani un número per entrada estàndard, i dibuixi 
 
 Els quadrats els anirà dibuixant separant-los per una línia en blanc.
 
-Exemple:
-$ java Quadrats
- Quants?
- 2
-  X X X X X
-  X X X X X
-  X X X X X
-  X X X X X
-  X X X X X
-
-  X X X X X
-  X X X X X
-  X X X X X
-  X X X X X
-  X X X X X
+Exemple:  
+$ java Quadrats  
+ Quants?  
+ 2  
+  X X X X X  
+  X X X X X  
+  X X X X X  
+  X X X X X  
+  X X X X X  
+  
+  X X X X X  
+  X X X X X  
+  X X X X X  
+  X X X X X  
+  X X X X X  
