@@ -1,3 +1,5 @@
+## CIFRADOS  
+
 #### Cifrado Cesar:  
   
 #### Cifrado Vigenère:  
@@ -20,3 +22,7 @@ Este tipo de cifrado divide el texto en bloques fijos y luego aplica una serie d
   
 #### Cifrado RSA:  
 Un algoritmo de cifrado asimétrico que utiliza un par de claves: una pública para cifrar y una privada para descifrar. Es ampliamente utilizado en la seguridad de la información y en la criptografía de clave pública.  
+
+## GENERADORES:  
+#### Contraseñas:    
+Generador básico de contraseñas.
