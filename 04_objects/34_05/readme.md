@@ -10,7 +10,9 @@ Et passo la plantilla amb el main() perquè el prgtest et deixi passar.
 
 _public class Ascensor {  
     // XXX  
+
     public static void puja(Ascensor ascensor) {  
+
         // XXX  
     }  
     public static void main(String[] args){  
