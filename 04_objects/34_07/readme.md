@@ -1,5 +1,7 @@
-Desenvolupa una nova versió de Ascensor  
+Desenvolupa una nova versió de Ascensor.  
+
 En aquesta ocasió disposarà d'una funció anomenada creaAscensorsEnEscala() que rebrà un nombre d'ascensors i retornarà un array amb el nombre d'ascensors especificat de manera que cada ascensor estarà en el pis indicat per la seva posició a l'array.  
+
 El main() decidirà a partir del valor que rebi en el primer argument de línia de comandes, quants ascensors crea, cridarà a creaAscensorsEnEscala() i mostrarà els pisos de tots els ascensors creats.  
 Completa aquesta plantilla:  
 
