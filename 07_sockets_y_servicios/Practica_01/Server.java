@@ -1,59 +1,74 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Server extends Thread {
     private ServerSocket servidor;
-    private Scanner scanner;
+    private Socket cliente;
+    private ObjectOutputStream salida;
+    private ObjectInputStream entrada;
+    private BufferedReader consoleReader;
+    private boolean fin;
 
     public Server() throws IOException {
         int puerto = 5000;
         servidor = new ServerSocket(puerto);
-        scanner = new Scanner(System.in);
+        fin = false;
+        consoleReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Servidor establecido");
-        System.out.println("Esperando conexiones en puerto: " + puerto);
+        System.out.println("Esperando conexion en puerto: " + puerto);
+    }
+
+    public void run() {
+        try {
+            cliente = servidor.accept();
+            System.out.println("Conexion aceptada de: " + cliente.getInetAddress());
+            salida = new ObjectOutputStream(cliente.getOutputStream());
+            entrada = new ObjectInputStream(cliente.getInputStream());
+
+            Thread receiverThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        while (!fin) {
+                            String mensaje = (String) entrada.readObject();
+                            System.out.println("CLIENTE >>> " + mensaje);
+                            if (mensaje.equals("fin")) {
+                                fin = true;
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            receiverThread.start();
+
+            do {
+                String mensajeConsola = consoleReader.readLine();
+                salida.writeObject(mensajeConsola + "\n");
+                salida.flush();
+                System.out.println("SERVIDOR <<< " + mensajeConsola);
+            } while (!fin);
+
+            entrada.close();
+            salida.close();
+            cliente.close();
+            servidor.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
         try {
             Server miServer = new Server();
             miServer.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void run() {
-        try {
-            Socket cliente = servidor.accept();
-            System.out.println("Conexion aceptada de: " + cliente.getInetAddress());
-            ObjectOutputStream salida = new ObjectOutputStream(cliente.getOutputStream());
-            ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());
-
-            String mensaje;
-            do {
-                // Permitir al servidor escribir un mensaje después de que el cliente ha enviado uno
-                //System.out.print("Escriba un mensaje para el cliente: ");
-                String mensajeServidor = scanner.nextLine();
-                salida.writeObject(mensajeServidor);
-                salida.flush();
-                System.out.println("SERVIDOR >>> " + mensajeServidor);
-
-                // Leer y enviar el mensaje del servidor al cliente
-                mensaje = (String) entrada.readObject();
-                System.out.println("CLIENTE <<< " + mensaje);
-            } while (!mensaje.equals("fin"));
-
-            entrada.close();
-            salida.close();
-            cliente.close();
-            servidor.close();
-            scanner.close();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
