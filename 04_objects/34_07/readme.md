@@ -3,6 +3,7 @@ En aquesta ocasió disposarà d'una funció anomenada creaAscensorsEnEscala() qu
 El main() decidirà a partir del valor que rebi en el primer argument de línia de comandes, quants ascensors crea, cridarà a creaAscensorsEnEscala() i mostrarà els pisos de tots els ascensors creats.  
 Completa aquesta plantilla:  
 
+  ```sh
 /* XXX */  
 public class Ascensor {  
     /* XXX */  
@@ -17,6 +18,7 @@ public class Ascensor {
         }  
     }  
 }  
+  ```  
   
 #### Un exemple de sortida serà:  
   
