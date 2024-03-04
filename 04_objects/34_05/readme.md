@@ -8,8 +8,11 @@ Aquest procediment incrementarà en un el pis en que es troba l'ascensor que rep
 
 Et passo la plantilla amb el main() perquè el prgtest et deixi passar.  
 
+
 _public class Ascensor {  
-    // XXX  
+
+    // XXX   
+
 
     public static void puja(Ascensor ascensor) {  
 
@@ -29,7 +32,8 @@ _public class Ascensor {
 
     }  
 
-}_  
+}_    
+
 
 En completar el programa anterior, caldrà que l'execució sigui la següent:  
 
