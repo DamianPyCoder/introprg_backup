@@ -10,6 +10,6 @@
 
 #### Inclou un main() que declari una instància d'ascensor i mostri el pis en que es troba
 
-#### Considera la següent simulació  
+#### Considera la següent simulació:  
 _java Ascensor  
 L'ascensor està a la planta -1_  
