@@ -1,4 +1,4 @@
-En aquest exercici implementarem un ascensor.
+#### En aquest exercici implementarem un ascensor.
 
 De moment del nostre ascensor només ens interessarà saber en quin pis es troba.
 
