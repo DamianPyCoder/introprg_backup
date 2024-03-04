@@ -2,6 +2,8 @@
 
 Afegeix el següent procediment al codi de l'ascensor definit a l'exercici anterior:  
 
+  ```sh
+
 _public static void puja(Ascensor ascensor)_  
 
 Aquest procediment incrementarà en un el pis en que es troba l'ascensor que rep.  
@@ -32,8 +34,9 @@ _public class Ascensor {
 
     }  
 
-}_    
-
+}  
+  
+  ```
 
 En completar el programa anterior, caldrà que l'execució sigui la següent:  
 
