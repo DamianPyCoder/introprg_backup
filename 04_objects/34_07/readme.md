@@ -18,14 +18,14 @@ public class Ascensor {
     }  
 }  
   
-Un exemple de sortida serà:  
+#### Un exemple de sortida serà:  
   
-java Ascensor 3  
+_java Ascensor 3  
 Ascensor 0 al pis 0  
 Ascensor 1 al pis 1  
-Ascensor 2 al pis 2  
+Ascensor 2 al pis 2_  
   
-En cas que no se li passi un únic úargument enter, es considerarà que se li ha passat el valor 0, i es mostrarà el missatge Cap ascensor com mostra la següent execució.  
+#### En cas que no se li passi un únic úargument enter, es considerarà que se li ha passat el valor 0, i es mostrarà el missatge Cap ascensor com mostra la següent execució.  
 
-java Ascensor 15 són 15  
-Cap ascensor  
+_java Ascensor 15 són 15  
+Cap ascensor_  
