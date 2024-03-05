@@ -8,7 +8,9 @@ public class GatRenat {
 
 }
 ´´´
-En aquesta ocasió afegirem al nostre gat Renat la possibilitat d'indicar en quina posició es troba. En concret, podrà estar dret, assegut o estirat.
+En aquesta ocasió afegirem al nostre gat Renat la possibilitat d'indicar en quina posició es troba. En concret, podrà estar dret, assegut o estirat.  
+
+![](https://github.com/DamianPyCoder/introprg_backup/blob/main/04_objects/34_10/uml.png)  
 
 Modifica la definició de la seva classe perquè pugui guardar aquesta informació, fent que inicialment el gat estigui estirat.
 
