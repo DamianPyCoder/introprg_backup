@@ -1,110 +1,89 @@
-package EJERCICIOFINAL;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Server extends Thread {
 	//Server
 	private ServerSocket socketServidor;
-	private ObjectOutputStream streamSalida;
+	private int puerto = 5000;
 	private String mensajeSalida;
 	boolean servidorEstablecido = false;
-	Scanner reader = new Scanner(System.in);
 
-	//Cliente
-	private Socket socketCliente;
-	private ObjectInputStream streamEntrada;
+	//Clientes
+	public static ArrayList<ObjectOutputStream> streamSalidasClientes = new ArrayList<ObjectOutputStream>();
 	private String mensajeEntrada;
-	private String ipCliente;
-	private boolean finalizarEntrada = false;
 	
 	
 	
-	private boolean comunicacionEstablecida = false;
+	//private boolean comunicacionEstablecida = false;
 
-	//**********
+	//****************************
 	//INICIAR COMUNICACION
-	//**********
+	//****************************
 	public Server() {
-		int puerto = 5000;
 		//Establer server socket
 		while (!servidorEstablecido) {
 			try {
 				socketServidor = new ServerSocket(puerto);
-				System.out.println("Servidor establecido");
-				System.out.println("Esperando conexion en puerto: " + puerto);
+				System.out.println("Servidor establecido en puerto: " + puerto);
 				servidorEstablecido = true;
 			} catch (Exception e){e.printStackTrace();}
 		}
-		
-		//Establecer conexion
-		while(!comunicacionEstablecida) {
+	}
+	
+	public void buscarConexionesYreenviar() {
+	//Establecer conexiones
+		while(true) { //!conexionEstablecida
 			try {
+				Socket socketCliente = socketServidor.accept();
+				System.out.println("Nevo cliente con IP: " + socketCliente.getInetAddress());
+				ObjectOutputStream streamSalida = new ObjectOutputStream(socketCliente.getOutputStream());
+				streamSalidasClientes.add(streamSalida);
+				ObjectInputStream streamEntrada = new ObjectInputStream(socketCliente.getInputStream());
+				Thread enviarMensaje = new EnviarMensajesThread(streamEntrada);
+				enviarMensaje.start();
+				System.out.println("Mensaje captado. Reenviandolo a " + streamSalidasClientes.size() + " clientes");
 				
-				socketCliente = socketServidor.accept();
-				comunicacionEstablecida = true;
-				streamSalida = new ObjectOutputStream(socketCliente.getOutputStream());
-				streamEntrada = new ObjectInputStream(socketCliente.getInputStream());
-				System.out.println("Estableciendo comunicacion con cliente: " + socketCliente.getInetAddress());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
-
-
-
-	//**********
-	//LECTURA EN BACKGROUND
-	//**********
-	public void run() {
-		try {
-			do {
-				//lectura
-				mensajeEntrada = (String) streamEntrada.readObject();
-				if (mensajeEntrada.equals("fin\n")) {
-					//Cerrar conexiones
-					finalizarEntrada = true;
-					comunicacionEstablecida = false;
-					streamSalida.close();
-					streamEntrada.close();
-					socketCliente.close();
-					socketServidor.close();
-				}
-				System.out.print("\nMENSAJE DE CLIENTE: " + mensajeEntrada);
-				System.out.print("\nYO SERVIDOR: ");
-			} while (!finalizarEntrada);
-		} catch (Exception e) {}
-
-	}
-
-	//**********
-	//ENVIO DE MENSAJES
-	//**********
-	public void enviarMensajes() throws Exception {
-		try {
-			while(comunicacionEstablecida) {
-				System.out.print("YO SERVIDOR: ");
-				mensajeSalida = reader.nextLine();
-				streamSalida.writeObject(((String) mensajeSalida) + "\n");
-				streamSalida.flush();
-			}
-		} catch (Exception e) {}
-	}
-	
 	public static void main(String[] args) {
 		//Inica Servidor
 		Server miServer = new Server();
-		
-		//Lectura en background
-		miServer.start();
-		
-		//Envio de mensajes
-		try {
-			miServer.enviarMensajes();
-		} catch (Exception e) {}
+		try {miServer.buscarConexionesYreenviar();} catch(Exception e) {}
 	}
+	
+	//****************************
+	//LECTURA Y REENVIO
+	//****************************
+	public class EnviarMensajesThread extends Thread {
+		private ObjectInputStream streamEntrada;
+		public EnviarMensajesThread(ObjectInputStream streamEntrada) {
+			this.streamEntrada = streamEntrada;
+		}
+		
+		public void run() {
+			//lectura y escritura
+			System.out.print("reenviando");
+			try{
+				while(true) {
+					String mensajeEntrada = (String) this.streamEntrada.readObject();
+					System.out.println(mensajeEntrada);
+					for(ObjectOutputStream streamSalida : Server.streamSalidasClientes) {
+						streamSalida.writeObject(mensajeEntrada + "\n");
+						streamSalida.flush();
+					}
+				}
+			} catch (Exception e){
+				e.printStackTrace();
+			};
+		}
+	}
+	
+	
 }
